@@ -8,44 +8,44 @@ data class WeatherResponse(
    val lat: Double,
    val lon: Double,
    val timezone: String,
-   val current: Current,
-   val hourly: List<Hourly>,
-   val daily: List<Daily>
+   val current: CurrentDTO,
+   val hourly: List<HourlyDTO>,
+   val daily: List<DailyDTO>
 )
 
 @Serializable
-data class Current(
+data class CurrentDTO(
    val dt: Long,
    val temp: Double,
    val humidity: Int,
    val clouds: Int,
    @SerialName("wind_speed") val windSpeed: Double,
-   val weather: List<Weather>
+   val weather: List<WeatherDTO>
 )
 
 @Serializable
-data class Hourly(
+data class HourlyDTO(
    val dt: Long,
    val temp: Double,
-   val weather: List<Weather>
+   val weather: List<WeatherDTO>
 )
 
 @Serializable
-data class Daily(
+data class DailyDTO(
    val dt: Long,
    @SerialName("temp") 
-   val temperature: Temperature,
-   val weather: List<Weather>
+   val temperature: TemperatureDTO,
+   val weather: List<WeatherDTO>
 )
 
 @Serializable
-data class Temperature(
+data class TemperatureDTO(
    val min: Double,
    val max: Double
 )
 
 @Serializable
-data class Weather(
+data class WeatherDTO(
    val id: Int,
    val main: String,
    val description: String,
