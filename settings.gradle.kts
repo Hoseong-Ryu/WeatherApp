@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "WheatherApp"
 include(":app")
- 
+include(":domain")
+include(":data")
