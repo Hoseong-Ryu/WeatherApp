@@ -10,8 +10,16 @@ android {
     namespace = "com.devhoseong.data"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         minSdk = 24
+
+        defaultConfig {
+            buildConfigField("String", "WEATHER_API_KEY", "\"${properties["WEATHER_API_KEY"]}\"")
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -43,6 +51,7 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     // Retrofit
+    implementation(libs.okhttp.core)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
