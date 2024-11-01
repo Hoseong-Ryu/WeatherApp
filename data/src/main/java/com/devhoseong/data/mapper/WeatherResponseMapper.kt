@@ -11,15 +11,17 @@ import com.devhoseong.domain.model.Weather
 
 fun WeatherResponse.mapToWeather(): Weather {
     return Weather(
-        currentWeather = current.mapToCurrentWeather(),
+        currentWeather = current.mapToCurrentWeather(daily.first()),
         hourlyForecasts = hourly.map { it.mapToHourlyForecast() },
         dailyForecasts = daily.map { it.mapToDailyForecast() }
     )
 }
 
-fun CurrentDTO.mapToCurrentWeather(): CurrentWeather {
+fun CurrentDTO.mapToCurrentWeather(daily: DailyDTO): CurrentWeather {
     return CurrentWeather(
         temperature = temp,
+        minTemp = daily.temperature.min,
+        maxTemp = daily.temperature.max,
         humidity = humidity,
         windSpeed = windSpeed,
         clouds = clouds,

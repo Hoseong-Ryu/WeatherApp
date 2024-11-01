@@ -8,6 +8,8 @@ data class Weather(
 
 data class CurrentWeather(
     val temperature: Double,
+    val minTemp: Double,
+    val maxTemp: Double,
     val humidity: Int,
     val windSpeed: Double,
     val clouds: Int,
