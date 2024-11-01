@@ -25,8 +25,8 @@ data class HourlyForecast(
 
 data class DailyForecast(
     val timestamp: Long,
-    val minTemp: Double,
-    val maxTemp: Double,
+    val minTemp: Int,
+    val maxTemp: Int,
     val weatherIcon: String
 )
 

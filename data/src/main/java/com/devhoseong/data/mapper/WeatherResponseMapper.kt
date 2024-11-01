@@ -42,8 +42,8 @@ private fun HourlyDTO.mapToHourlyForecast(): HourlyForecast {
 private fun DailyDTO.mapToDailyForecast(): DailyForecast {
     return DailyForecast(
         timestamp = dt,
-        minTemp = temperature.min,
-        maxTemp = temperature.max,
+        minTemp = temperature.min.roundToInt(),
+        maxTemp = temperature.max.roundToInt(),
         weatherIcon = weather.firstOrNull()?.icon.orEmpty()
     )
 }
