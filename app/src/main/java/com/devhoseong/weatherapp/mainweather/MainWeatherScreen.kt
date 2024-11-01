@@ -3,6 +3,7 @@ package com.devhoseong.weatherapp.mainweather
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,6 +23,7 @@ import com.devhoseong.domain.model.Weather
 import com.devhoseong.domain.usecase.Failure
 import com.devhoseong.weatherapp.mainweather.components.CurrentWeatherSection
 import com.devhoseong.weatherapp.mainweather.components.DailyForecastSection
+import com.devhoseong.weatherapp.mainweather.components.DayWeatherSection
 import com.devhoseong.weatherapp.mainweather.components.HourlySection
 import com.devhoseong.weatherapp.mainweather.components.MapSection
 
@@ -74,7 +76,12 @@ private fun WeatherContent(
             modifier = Modifier.fillMaxWidth()
         )
 
-        MapSection(city = city,modifier = Modifier.height(270.dp))
+        MapSection(city = city,modifier = Modifier.
+        fillMaxWidth().height(270.dp))
+
+        DayWeatherSection(weather, modifier = Modifier.fillMaxWidth())
+
+        Spacer(Modifier.height(10.dp))
     }
 }
 
