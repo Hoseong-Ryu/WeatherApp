@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(project(":domain"))
+    implementation(project(":data"))
 
     // Hilt
     implementation(libs.hilt.android)
