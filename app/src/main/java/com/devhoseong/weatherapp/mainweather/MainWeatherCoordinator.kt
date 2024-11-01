@@ -3,12 +3,8 @@ package com.devhoseong.weatherapp.mainweather
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewModelScope
 import com.devhoseong.domain.usecase.Failure
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.stateIn
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -21,14 +17,14 @@ class MainWeatherCoordinator(
 ) {
     val screenStateFlow = combine(
         viewModel.weatherState,
-        viewModel.cities,
+        viewModel.city,
         viewModel.error
-    ) { weather, cities, error ->
+    ) { weather, city, error ->
         when {
             error != null -> WeatherState.Error(error.mapToFailure())
             weather != null -> WeatherState.Success(
                 weather = weather,
-                cities = cities
+                city = city
             )
             else -> WeatherState.Loading
         }

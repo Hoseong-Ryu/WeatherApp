@@ -12,7 +12,7 @@ sealed interface WeatherState {
     data object Loading : WeatherState
     data class Success(
         val weather: Weather? = null,
-        val cities: List<City> = emptyList()
+        val city: City? = null,
     ) : WeatherState
     data class Error(val failure: Failure) : WeatherState
 }

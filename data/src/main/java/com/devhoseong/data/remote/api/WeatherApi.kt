@@ -11,6 +11,7 @@ interface WeatherApi {
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
         @Query("appid") apiKey: String = BuildConfig.WEATHER_API_KEY,
-        @Query("units") units: String = "metric"
+        @Query("units") units: String = "metric",
+        @Query("lang") lang: String = "kr",
     ): WeatherResponse
 }
