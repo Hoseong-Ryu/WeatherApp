@@ -8,6 +8,7 @@ import com.devhoseong.domain.model.CurrentWeather
 import com.devhoseong.domain.model.DailyForecast
 import com.devhoseong.domain.model.HourlyForecast
 import com.devhoseong.domain.model.Weather
+import kotlin.math.roundToInt
 
 fun WeatherResponse.mapToWeather(): Weather {
     return Weather(
@@ -19,9 +20,9 @@ fun WeatherResponse.mapToWeather(): Weather {
 
 fun CurrentDTO.mapToCurrentWeather(daily: DailyDTO): CurrentWeather {
     return CurrentWeather(
-        temperature = temp,
-        minTemp = daily.temperature.min,
-        maxTemp = daily.temperature.max,
+        temperature = temp.roundToInt(),
+        minTemp = daily.temperature.min.roundToInt(),
+        maxTemp = daily.temperature.max.roundToInt(),
         humidity = humidity,
         windSpeed = windSpeed,
         clouds = clouds,
@@ -33,7 +34,7 @@ fun CurrentDTO.mapToCurrentWeather(daily: DailyDTO): CurrentWeather {
 private fun HourlyDTO.mapToHourlyForecast(): HourlyForecast {
     return HourlyForecast(
         timestamp = dt,
-        temperature = temp,
+        temperature = temp.roundToInt(),
         weatherIcon = weather.firstOrNull()?.icon.orEmpty()
     )
 }

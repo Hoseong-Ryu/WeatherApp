@@ -7,9 +7,9 @@ data class Weather(
 )
 
 data class CurrentWeather(
-    val temperature: Double,
-    val minTemp: Double,
-    val maxTemp: Double,
+    val temperature: Int,
+    val minTemp: Int,
+    val maxTemp: Int,
     val humidity: Int,
     val windSpeed: Double,
     val clouds: Int,
@@ -19,7 +19,7 @@ data class CurrentWeather(
 
 data class HourlyForecast(
     val timestamp: Long,
-    val temperature: Double,
+    val temperature: Int,
     val weatherIcon: String
 )
 

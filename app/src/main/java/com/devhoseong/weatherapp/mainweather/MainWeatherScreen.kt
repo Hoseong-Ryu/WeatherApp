@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.devhoseong.weatherapp.mainweather.components.CurrentWeatherSection
+import com.devhoseong.weatherapp.mainweather.components.HourlySection
 
 @Composable
 fun MainWeatherScreen(
@@ -45,6 +46,13 @@ fun MainWeatherScreen(
                 CurrentWeatherSection(
                     weather = state.weather,
                     modifier = Modifier.fillMaxWidth(),
+                )
+
+                Spacer(Modifier.height(16.dp))
+
+                HourlySection(
+                    hourlyForecasts = state.weather?.hourlyForecasts.orEmpty(),
+                    modifier = Modifier.fillMaxWidth()
                 )
 
             }

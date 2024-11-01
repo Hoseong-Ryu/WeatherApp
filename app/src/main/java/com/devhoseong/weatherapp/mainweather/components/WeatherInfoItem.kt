@@ -42,7 +42,7 @@ fun CurrentWeatherSection(
                     Column {
 
                         Text(
-                            text = "${current.temperature.roundToInt()}°C",
+                            text = "${current.temperature}°C",
                             style = MaterialTheme.typography.headlineLarge
                         )
 
@@ -50,12 +50,12 @@ fun CurrentWeatherSection(
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             Text(
-                                text = "최저 ${current.minTemp.roundToInt()}°",
+                                text = "최저 ${current.minTemp}°",
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.primary
                             )
                             Text(
-                                text = "최고 ${current.maxTemp.roundToInt()}°",
+                                text = "최고 ${current.maxTemp}°",
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.error
                             )
