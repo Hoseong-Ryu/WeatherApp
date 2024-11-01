@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -18,7 +21,9 @@ android {
         minSdk = 24
 
         defaultConfig {
-            buildConfigField("String", "WEATHER_API_KEY", "\"${properties["WEATHER_API_KEY"]}\"")
+            val localProperties = Properties()
+            localProperties.load(FileInputStream(rootProject.file("local.properties")))
+            buildConfigField("String", "WEATHER_API_KEY", localProperties.getProperty("WEATHER_API_KEY", ""))
         }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
