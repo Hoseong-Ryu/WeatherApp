@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.devhoseong.weatherapp.mainweather.MainWeatherRoute
+import com.devhoseong.weatherapp.navigation.WeatherNavigation
 import com.devhoseong.weatherapp.ui.theme.WheatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WheatherAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainWeatherRoute()
+                    WeatherNavigation()
                 }
             }
         }
