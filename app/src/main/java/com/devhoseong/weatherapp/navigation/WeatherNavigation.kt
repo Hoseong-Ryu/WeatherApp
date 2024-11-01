@@ -1,5 +1,7 @@
 package com.devhoseong.weatherapp.navigation
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -19,6 +21,12 @@ fun WeatherNavigation(
     NavHost(
         navController = navController,
         startDestination = Screen.Main(),
+        enterTransition = {
+            EnterTransition.None
+        },
+        exitTransition = {
+            ExitTransition.None
+        }
     ) {
         composable<Screen.Main> { entry ->
             val city = entry.arguments?.let { args ->
