@@ -37,9 +37,11 @@ class CityDataSource @Inject constructor(
    }
 
    suspend fun searchCities(query: String): List<CityDTO> {
+       val lowercaseQuery = query.lowercase()
        return getCities()
            .filter {
-               it.name.contains(query) || it.country.contains(query)
+               it.name.lowercase().contains(lowercaseQuery) ||
+                       it.country.lowercase().contains(lowercaseQuery)
            }
    }
 }
