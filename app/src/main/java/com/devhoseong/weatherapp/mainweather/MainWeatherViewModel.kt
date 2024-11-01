@@ -21,18 +21,16 @@ class MainWeatherViewModel @Inject constructor(
         MutableStateFlow(null)
     val weatherState: StateFlow<Weather?> = _weatherState.asStateFlow()
 
-    private val _cities = MutableStateFlow(
-        listOf(
-            City(
-                id = 1839726,
-                name = "Asan",
-                country = "KR",
-                lat = 36.783611,
-                lon = 127.004173
-            )
+    private val _city = MutableStateFlow(
+        City(
+            id = 1839726,
+            name = "Asan",
+            country = "KR",
+            lat = 36.783611,
+            lon = 127.004173
         )
     )
-    val cities = _cities.asStateFlow()
+    val city = _city.asStateFlow()
 
     private val _error = MutableStateFlow<Throwable?>(null)
     val error = _error.asStateFlow()
