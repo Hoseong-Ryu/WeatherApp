@@ -25,3 +25,10 @@ Naver Map Client ID 설정 (local.properties)
 ~~~
 NAVER_MAP_API_KEY=your_client_id
 ~~~
+
+## 스크린샷
+
+![메인화면]https://github.com/Hoseong-Ryu/WeatherApp/blob/master/image/img.png?raw=true
+![검색 후 메인화면]https://github.com/Hoseong-Ryu/WeatherApp/blob/master/image/img_1.png?raw=true
+![검색 후 메인화면 지도]https://github.com/Hoseong-Ryu/WeatherApp/blob/master/image/img_2.png?raw=true
+![검색 화면]https://github.com/Hoseong-Ryu/WeatherApp/blob/master/image/img_3.png?raw=true
