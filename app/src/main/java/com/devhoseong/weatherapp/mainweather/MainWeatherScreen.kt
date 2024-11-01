@@ -1,12 +1,14 @@
 package com.devhoseong.weatherapp.mainweather
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,6 +23,7 @@ import com.devhoseong.domain.usecase.Failure
 import com.devhoseong.weatherapp.mainweather.components.CurrentWeatherSection
 import com.devhoseong.weatherapp.mainweather.components.DailyForecastSection
 import com.devhoseong.weatherapp.mainweather.components.HourlySection
+import com.devhoseong.weatherapp.mainweather.components.MapSection
 
 @Composable
 fun MainWeatherScreen(
@@ -43,36 +46,35 @@ private fun WeatherContent(
     weather: Weather?,
     modifier: Modifier = Modifier
 ) {
+    val scrollState = rememberScrollState()
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
+            .verticalScroll(scrollState),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
             text = city?.name.orEmpty(),
             style = MaterialTheme.typography.titleLarge,
         )
 
-        Spacer(Modifier.height(16.dp))
-
         CurrentWeatherSection(
             weather = weather,
             modifier = Modifier.fillMaxWidth(),
         )
-
-        Spacer(Modifier.height(16.dp))
 
         HourlySection(
             hourlyForecasts = weather?.hourlyForecasts.orEmpty(),
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(16.dp))
-
         DailyForecastSection(
             dailyForecasts = weather?.dailyForecasts.orEmpty(),
             modifier = Modifier.fillMaxWidth()
         )
+
+        MapSection(city = city,modifier = Modifier.height(270.dp))
     }
 }
 

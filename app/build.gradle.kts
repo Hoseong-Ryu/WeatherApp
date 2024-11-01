@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -17,6 +20,9 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        val localProperties = Properties()
+        localProperties.load(FileInputStream(rootProject.file("local.properties")))
+        manifestPlaceholders["NAVER_MAP_API_KEY"] = localProperties.getProperty("NAVER_MAP_API_KEY", "")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -55,6 +61,8 @@ dependencies {
 
     implementation(project(":domain"))
     implementation(project(":data"))
+
+    implementation(libs.map.sdk)
 
     // Hilt
     implementation(libs.hilt.android)
