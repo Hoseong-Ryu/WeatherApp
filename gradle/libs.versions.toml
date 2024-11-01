@@ -32,6 +32,7 @@ hilt = "2.51.1"
 jetbrainsKotlinJvm = "2.0.0"
 appcompat = "1.7.0"
 material = "1.12.0"
+hilt-navigation-compose = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,6 +55,7 @@ coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutin
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 inject = "javax.inject:javax.inject:1"
 
 okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
