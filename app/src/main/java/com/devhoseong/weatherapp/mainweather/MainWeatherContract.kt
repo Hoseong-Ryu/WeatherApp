@@ -22,7 +22,8 @@ sealed interface WeatherState {
  * passed to the coordinator to handle
  **/
 data class MainWeatherActions(
-    val OnClick: () -> Unit = {},
+    val getWeather: (city: City) -> Unit = { city -> },
+    val navigateToSearch: () -> Unit = {},
 )
 
 

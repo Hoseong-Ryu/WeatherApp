@@ -37,18 +37,17 @@ fun MapSection(
     val lon = city?.lon ?: 0.0
     val cityName = city?.name.orEmpty()
 
-    val marker = remember {
-        Marker().apply {
-            position = LatLng(lat, lon)
-            captionText = cityName
-        }
+    val marker = Marker().apply {
+        position = LatLng(lat, lon)
+        captionText = cityName
     }
 
     Card(
         modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-        Box(modifier = Modifier.fillMaxSize()
+        Box(modifier = Modifier
+            .fillMaxSize()
             .nestedScroll(remember {
                 object : NestedScrollConnection {
                     override fun onPreScroll(
@@ -61,6 +60,7 @@ fun MapSection(
             AndroidView(factory = { mapView }) { view ->
                 view.getMapAsync { map ->
                     naverMap = map.apply {
+                        marker.map = null
                         // 카메라 위치 이동
                         moveCamera(
                             CameraUpdate.scrollAndZoomTo(
