@@ -1,5 +1,7 @@
 package com.devhoseong.weatherapp.mainweather.components
 
+import android.annotation.SuppressLint
+import android.view.MotionEvent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Card
@@ -25,6 +27,7 @@ import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.overlay.Marker
 
+@SuppressLint("ClickableViewAccessibility")
 @Composable
 fun MapSection(
     city: City?,
@@ -48,27 +51,37 @@ fun MapSection(
     ) {
         Box(modifier = Modifier
             .fillMaxSize()
-            .nestedScroll(remember {
-                object : NestedScrollConnection {
-                    override fun onPreScroll(
-                        available: Offset,
-                        source: NestedScrollSource
-                    ): Offset = available
-                }
-            })
         ) {
-            AndroidView(factory = { mapView }) { view ->
+            AndroidView(
+                factory = {
+                    MapView(context).apply {
+                        setOnTouchListener { v, event ->
+                            when (event.action) {
+                                MotionEvent.ACTION_DOWN,
+                                MotionEvent.ACTION_MOVE -> {
+                                    v.parent.requestDisallowInterceptTouchEvent(true)
+                                    false
+                                }
+                                MotionEvent.ACTION_UP -> {
+                                    v.parent.requestDisallowInterceptTouchEvent(false)
+                                    false
+                                }
+                                else -> false
+                            }
+                        }
+                    }
+                },
+                modifier = Modifier.fillMaxSize()
+            )  { view ->
                 view.getMapAsync { map ->
                     naverMap = map.apply {
                         marker.map = null
-                        // 카메라 위치 이동
                         moveCamera(
                             CameraUpdate.scrollAndZoomTo(
                                 LatLng(lat, lon),
                                 12.0
                             )
                         )
-                        // 마커 표시
                         marker.map = this
                     }
                 }
