@@ -52,36 +52,24 @@ fun MapSection(
         Box(modifier = Modifier
             .fillMaxSize()
         ) {
-            AndroidView(
-                factory = {
-                    MapView(context).apply {
-                        setOnTouchListener { v, event ->
-                            when (event.action) {
-                                MotionEvent.ACTION_DOWN,
-                                MotionEvent.ACTION_MOVE -> {
-                                    v.parent.requestDisallowInterceptTouchEvent(true)
-                                    false
-                                }
-                                MotionEvent.ACTION_UP -> {
-                                    v.parent.requestDisallowInterceptTouchEvent(false)
-                                    false
-                                }
-                                else -> false
-                            }
-                        }
-                    }
-                },
-                modifier = Modifier.fillMaxSize()
-            )  { view ->
+            AndroidView(factory = { mapView.apply {
+                setOnTouchListener { v, event ->
+                    if (event.action == MotionEvent.ACTION_DOWN)
+                        v.parent.requestDisallowInterceptTouchEvent(true)
+                    false
+                }
+            } }) { view ->
                 view.getMapAsync { map ->
                     naverMap = map.apply {
                         marker.map = null
+                        // 카메라 위치 이동
                         moveCamera(
                             CameraUpdate.scrollAndZoomTo(
                                 LatLng(lat, lon),
                                 12.0
                             )
                         )
+                        // 마커 표시
                         marker.map = this
                     }
                 }
