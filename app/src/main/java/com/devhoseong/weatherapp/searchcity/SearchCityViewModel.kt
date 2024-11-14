@@ -31,7 +31,7 @@ class SearchCityViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             searchQuery
-                .debounce(500L)
+                .debounce(300L)
                 .collect { query ->
                     searchCity(query)
                 }
