@@ -33,7 +33,7 @@ class SearchCityCoordinator(
 
     fun searchCity(query: String) {
         this.query = query
-        viewModel.searchCity(query)
+        viewModel.updateSearchQuery(query)
     }
 
     fun navigateToMain(city: City) {
