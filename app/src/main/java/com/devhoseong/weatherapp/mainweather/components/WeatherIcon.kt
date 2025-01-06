@@ -22,14 +22,15 @@ fun WeatherIcon(
 object WeatherIconUtils {
     fun getWeatherIconResId(iconCode: String): Int {
         return when (iconCode) {
-            "01d" -> R.drawable.ic_01d  // 맑음 (낮)
-            "01n" -> R.drawable.ic_02d  // 맑음 (밤)
-            "02d" -> R.drawable.ic_03d  // 구름 조금 (낮)
-            "02n" -> R.drawable.ic_04d  // 구름 많음
-            "03d", "03n" -> R.drawable.ic_09d  // 비
-            "04d", "04n" -> R.drawable.ic_10d  // 소나기
-            "09d", "09n" -> R.drawable.ic_11d  // 뇌우
-            "10d", "10n" -> R.drawable.ic_13d  // 눈
+            "01d", "01n" -> R.drawable.ic_01d  // 맑음 (낮)
+            "02d", "02n" -> R.drawable.ic_02d  // 구름 조금
+            "03d", "03n" -> R.drawable.ic_03d  // 구름 많이 끼임
+            "04d", "04n" -> R.drawable.ic_04d  // 구름 많음
+            "09d", "09n" -> R.drawable.ic_09d  // 소나기
+            "10d", "10n" -> R.drawable.ic_10d  // 비
+            "11d", "11n" -> R.drawable.ic_11d  // 뇌우
+            "13d", "13n" -> R.drawable.ic_13d  // 눈
+            "50d", "50n" -> R.drawable.ic_50d  // 안개
             else -> R.drawable.ic_01d
         }
     }
