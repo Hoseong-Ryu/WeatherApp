@@ -6,6 +6,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import com.devhoseong.domain.model.City
+import com.devhoseong.weatherapp.isValid
 
 
 @Composable
@@ -19,8 +20,8 @@ fun MainWeatherRoute(
     // UI Actions
     val actions = rememberMainWeatherActions(coordinator)
 
-    LaunchedEffect(Unit) {
-        if (city != null) {
+    LaunchedEffect(city) {
+        if (city != null && city.isValid()) {
             actions.getWeather(city)
         }
     }
