@@ -33,6 +33,9 @@ class MainWeatherViewModel @Inject constructor(
     }
 
     fun getWeather(city: City) {
+        if (state.value is WeatherState.Success && (city == (state.value as WeatherState.Success).city)) {
+            return
+        }
         viewModelScope.launch {
             _state.value = WeatherState.Loading
             getWeatherUseCase(city.lat, city.lon)
