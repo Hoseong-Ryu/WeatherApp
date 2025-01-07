@@ -45,7 +45,8 @@ class SearchCityCoordinator(
                 lat = lat,
                 lon = lon
             )){
-                popUpTo(0){ inclusive = true }
+                popUpTo(Screen.Main())
+                launchSingleTop = true
             }
         }
     }

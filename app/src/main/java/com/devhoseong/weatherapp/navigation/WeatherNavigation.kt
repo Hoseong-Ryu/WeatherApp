@@ -3,7 +3,6 @@ package com.devhoseong.weatherapp.navigation
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -31,11 +30,11 @@ fun WeatherNavigation(
         composable<Screen.Main> { entry ->
             val city = entry.arguments?.let { args ->
                 City(
-                    id = args.getInt("id", 1839726),
-                    name = args.getString("name", "Asan"),
-                    country = args.getString("country", "KR"),
-                    lat = args.getDouble("lat", 36.78361),
-                    lon = args.getDouble("lon", 127.00417)
+                    id = args.getInt("id", 0),
+                    name = args.getString("name", ""),
+                    country = args.getString("country", ""),
+                    lat = args.getDouble("lat", 0.0),
+                    lon = args.getDouble("lon", 0.0)
                 )
             }
             MainWeatherRoute(
